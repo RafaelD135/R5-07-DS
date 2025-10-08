@@ -1,1 +1,28 @@
+name: Question 3
 
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Creation du fichier Q3_archive_java
+        run: |
+          echo "Debein Rafael" > Q3_archive_java.txt
+          cat Q3.java > Q3_archive_java.txt
+
+      - name: Commit et push du rapport
+        run: |
+          git config --global user.name RafaelD135
+          git config --global user.email debeinrafael@gmail.com
+          git add Q1_archive_TOTO.txt
+          git commit -m "test push de Q3_archive_java.txt"
+          git push
