@@ -19,6 +19,7 @@ jobs:
           echo "Debein Rafael" > Q2_archive_TOTO.txt
           echo "Date : $(date '+%Y-%m-%d %H:%M:%S')" >> Q2_archive_TOTO.txt
           cat TOTO.txt >> Q2_archive_TOTO.txt
+          echo "" >> Q2_archive_TOTO.txt
           ls -s TOTO.txt >> Q2_archive_TOTO.txt
           
 
