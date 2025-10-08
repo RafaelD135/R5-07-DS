@@ -24,7 +24,12 @@ jobs:
           echo "" >> $ARCHIVE_NAME
           wc -m Q6.java >> $ARCHIVE_NAME
 
-          
+          if [ -f Q6_archive_prev ]; then
+            echo "" >> $ARCHIVE_NAME
+            echo "Diff avec l'archive précédente:" >> $ARCHIVE_NAME
+            diff Q6_archive_prev $ARCHIVE_NAME >> $ARCHIVE_NAME
+          fi
+          cp $ARCHIVE_NAME Q6_archive_prev
           
 
           echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> $GITHUB_ENV
