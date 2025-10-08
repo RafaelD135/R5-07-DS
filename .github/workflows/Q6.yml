@@ -38,6 +38,6 @@ jobs:
           git config --global user.name RafaelD135
           git config --global user.email debeinrafael@gmail.com
           git pull
-          git add "$ARCHIVE_NAME"
+          git add "$ARCHIVE_NAME" Q6_différences.txt
           git commit -m "test push de $ARCHIVE_NAME"
           git push
