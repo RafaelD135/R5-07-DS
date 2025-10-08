@@ -25,14 +25,8 @@ jobs:
           wc -m Q6.java >> $ARCHIVE_NAME
 
           LAST_ARCHIVE=$(ls Q6_archive_* 2>/dev/null | sort | tail -n 1)
-          if [ "$LAST_ARCHIVE" != "$ARCHIVE_NAME" ]; then
-            if [ $? -ne 0 ]; then
-              diff "$LAST_ARCHIVE" "$ARCHIVE_NAME" >> $ARCHIVE_NAME
-              echo "Le contenu du fichier a changé depuis la dernière archive."
-            else
-              echo "Le contenu du fichier est identique à la dernière archive."
-            fi
-          else
+          diff "$LAST_ARCHIVE" "$ARCHIVE_NAME" >> $ARCHIVE_NAME
+
           
 
           echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> $GITHUB_ENV
