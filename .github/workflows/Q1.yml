@@ -1,1 +1,26 @@
+name: Question 1
 
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Creation du fichier Q1_archive_TOTO
+        run: echo TOTO.txt > Q1_archive_TOTO.txt
+
+      - name: Commit et push du rapport
+        run: |
+          git config --global user.name RafaelD135
+          git config --global user.email debeinrafael@gmail.com
+          git add Q1_archive_TOTO.txt
+          git commit -m "test push de Q1_archive_TOTO.txt"
+          git push
