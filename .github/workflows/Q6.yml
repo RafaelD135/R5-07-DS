@@ -24,17 +24,11 @@ jobs:
           echo "" >> $ARCHIVE_NAME
           wc -m Q6.java >> $ARCHIVE_NAME
 
-          LAST_ARCHIVE=$(ls -t Q6_archive_* 2>/dev/null | sort | tail -n 1)
-          diff "$LAST_ARCHIVE" "$ARCHIVE_NAME" >> $ARCHIVE_NAME
-  
-          if [ "$LAST_ARCHIVE" != "$ARCHIVE_NAME" ]; then
-            if [ $? -ne 0 ]; then
-              echo "Le contenu du fichier a changé depuis la dernière archive."
-            else
-              echo "Le contenu du fichier est identique à la dernière archive."
-            fi
+          PREV_ARCHIVE=$(ls Q6_archive_* | grep -v "$ARCHIVE_NAME" | sort | tail -n 1)
+          if [ -n "$PREV_ARCHIVE" ]; then
+            diff "$PREV_ARCHIVE" "$ARCHIVE_NAME" > Q6_différences.txt
           else
-            echo "Aucune archive précédente trouvée."
+            echo "Aucun fichier archive précédent trouvé." > Q6_différences.txt
           fi
 
           echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> $GITHUB_ENV
