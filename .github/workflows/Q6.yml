@@ -1,0 +1,39 @@
+name: Question 6
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Creation du fichier Q6_archive_date
+        run: |
+          DATE=$(date '+%d-%m-%Y')
+          ARCHIVE_NAME="Q6_archive_${DATE}"
+          echo "Debein Rafael" > $ARCHIVE_NAME
+          echo "" >> $ARCHIVE_NAME
+          cat Q5.java >> $ARCHIVE_NAME
+          echo "" >> $ARCHIVE_NAME
+          wc -m Q6.java >> $ARCHIVE_NAME
+
+          
+          
+
+          echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> $GITHUB_ENV
+
+      - name: Commit et push du rapport
+        run: |
+          git config --global user.name RafaelD135
+          git config --global user.email debeinrafael@gmail.com
+          git pull
+          git add "$ARCHIVE_NAME"
+          git commit -m "test push de $ARCHIVE_NAME"
+          git push
