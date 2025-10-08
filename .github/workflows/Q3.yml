@@ -23,6 +23,6 @@ jobs:
         run: |
           git config --global user.name RafaelD135
           git config --global user.email debeinrafael@gmail.com
-          git add Q1_archive_TOTO.txt
+          git add Q3_archive_java.txt
           git commit -m "test push de Q3_archive_java.txt"
           git push
