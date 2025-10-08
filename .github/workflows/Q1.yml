@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Creation du fichier Q1_archive_TOTO
-        run: echo TOTO.txt >> Q1_archive_TOTO.txt
+        run: cat TOTO.txt >> Q1_archive_TOTO.txt
 
       - name: Commit et push du rapport
         run: |
