@@ -17,7 +17,7 @@ jobs:
       - name: Creation du fichier Q3_archive_java
         run: |
           echo "Debein Rafael" > Q3_archive_java.txt
-          cat Q3.java > Q3_archive_java.txt
+          cat Q3.java >> Q3_archive_java.txt
 
       - name: Commit et push du rapport
         run: |
