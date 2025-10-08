@@ -1,0 +1,31 @@
+name: Question 4
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Creation du fichier Q4_archive_date
+        run: |
+          DATE=$(date '+%d-%m-%Y')
+          ARCHIVE_NAME="archivesQ4/archive_${DATE}.zip"
+          echo "Debein Rafael" > $ARCHIVE_NAME
+          cat Q4.java >> $ARCHIVE_NAME
+
+      - name: Commit et push du rapport
+        run: |
+          git config --global user.name RafaelD135
+          git config --global user.email debeinrafael@gmail.com
+          git pull
+          git add Q1_archive_TOTO.txt
+          git commit -m "test push de Q1_archive_TOTO.txt"
+          git push
